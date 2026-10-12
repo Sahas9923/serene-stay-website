@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+/* Colours and fonts → creates bg-brown, text-maroon, font-serif, etc. */
+@theme {
+  --color-cream: #f7f1e6;
+  --color-sand: #efe4d0;
+  --color-brown: #3e2a1e;
+  --color-cocoa: #5c3d2e;
+  --color-caramel: #b07a4a;
+  --color-maroon: #7a1f1f;
+  --color-saffron: #d9902f;
+
+  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-sinhala: var(--font-noto-sinhala), "Iskoola Pota", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f7f1e6;
+  color: #3e2a1e;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+section[id] {
+  scroll-margin-top: 84px;
+}
+
+/* ---------- Sri Lankan pattern helpers ---------- */
+.bg-tile {
+  background-image: url("/patterns/tile.svg");
+  background-size: 90px 90px;
+}
+
+.kandyan-border {
+  height: 16px;
+  background-image: url("/patterns/border.svg");
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+}
+
+.kandyan-border-thin {
+  height: 8px;
+  background-image: url("/patterns/border.svg");
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: spin-slow 140s linear infinite;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-spin-slow { animation: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
